@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 const style = {
   position: 'absolute',
@@ -17,6 +18,7 @@ const style = {
   p: 4,
 };
 const BookingModal = (props) => {
+  const{user}=useAuth();
     const handleButton=(e)=>{
         e.preventDefault();
         alert("submitting")
@@ -50,6 +52,7 @@ const BookingModal = (props) => {
     <TextField 
           id="outlined-multiline-flexible"
           label="Your Name"
+          defaultValue={user.displayName}
           multiline
           style={{width:'100%', marginBottom:'5px'}}
         />
@@ -63,6 +66,7 @@ const BookingModal = (props) => {
           <TextField
           id="outlined-multiline-flexible"
           label="Email"
+          defaultValue={user.email}
           multiline
           style={{width:'100%',marginBottom:'5px'}}
         />

@@ -1,18 +1,29 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Alert, Button, Grid, LinearProgress, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import login from '../../images/login.png';
 const Login = () => {
     const [loginData, setLoginData]= useState({});
+const {loginUser,isLoading, authError,user}=useAuth();
+const location = useLocation();
+const navigate =useNavigate();
+const from = location?.state?.from?.pathname||'/';
 
     const handleOnChange=(e)=>{
-  const newLoginData= [...loginData];
-  newLoginData[e.target.name]=e.target.value;
-  setLoginData(newLoginData);
+      const field= e.target.name;
+      const value= e.target.value;
+const newLoginData= {...loginData};
+newLoginData[field]=value;
+
+
+setLoginData(newLoginData);
+console.log(loginData)
     }
     const handleSubmit=(e)=>{
-
+      console.log(loginData.email, loginData.password)
+loginUser(loginData.email, loginData.password);
 e.preventDefault();
     }
     return (
@@ -54,6 +65,13 @@ e.preventDefault();
         <br />
         <Link to='/register'>NEW USER? PLEASE REGISTER</Link>
 </form>
+{
+  isLoading?  <Box sx={{ width: '100%' }}>
+  <LinearProgress />
+</Box>:<></>
+}
+{user?.email?<Alert severity="success">Login Successfull!!</Alert>:<></>}
+{authError?<Alert severity="error">{authError}</Alert>:<></>}
 </Box>
 
                 </Grid>
