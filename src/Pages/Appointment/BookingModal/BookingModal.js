@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -19,6 +19,19 @@ const style = {
 };
 const BookingModal = (props) => {
   const{user}=useAuth();
+  const initialInfo = {patientName: user.displayName, email:user.email}
+  
+  const [bookingInfo, setBookingInfo]= useState(initialInfo);
+const handleOnBlur=(e)=>{
+  
+  const newBookingInfo ={...bookingInfo};
+  const field = e.target.name;
+  const value = e.target.value;
+  newBookingInfo[field]= value;
+  setBookingInfo(newBookingInfo);
+  console.log(newBookingInfo);
+}
+
     const handleButton=(e)=>{
         e.preventDefault();
         alert("submitting")
@@ -52,6 +65,8 @@ const BookingModal = (props) => {
     <TextField 
           id="outlined-multiline-flexible"
           label="Your Name"
+          name="patientName"
+          onBlur={handleOnBlur}
           defaultValue={user.displayName}
           multiline
           style={{width:'100%', marginBottom:'5px'}}
@@ -59,6 +74,8 @@ const BookingModal = (props) => {
         
           <TextField
           id="outlined-multiline-flexible"
+          name='phone'
+          onBlur={handleOnBlur}
           label="Phone Number"
           multiline
           style={{width:'100%',marginBottom:'5px'}}
@@ -66,6 +83,8 @@ const BookingModal = (props) => {
           <TextField
           id="outlined-multiline-flexible"
           label="Email"
+          name="email"
+          onBlur={handleOnBlur}
           defaultValue={user.email}
           multiline
           style={{width:'100%',marginBottom:'5px'}}
