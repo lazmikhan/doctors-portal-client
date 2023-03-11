@@ -34,7 +34,7 @@ const Treatment = (props) => {
       <CardActions>
       
       </CardActions>
-      <Button variant='contained' style={{backgroundColor:'#5CE7ED' }} sx={{mb:2}}>  <BookingModal appDate={props.appDate} treatment={props.treatment}></BookingModal> </Button>
+      <Button variant='contained' style={{backgroundColor:'#5CE7ED' }} sx={{mb:2}}>  <BookingModal localDate={props.localDate} appDate={props.appDate} treatment={props.treatment}></BookingModal> </Button>
      
     </Card>
             </Paper>

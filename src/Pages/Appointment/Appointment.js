@@ -44,7 +44,7 @@ const appBg ={
      
         <h2  style={{color: '#5CE7ED', marginBottom:'50px'}}> Appointment Available On:     {value.$d.toDateString()}</h2>
    
-            <AvailableAppointment appDate={value.$d.toDateString()}></AvailableAppointment>
+            <AvailableAppointment localDate={value.$d.toLocaleDateString()} appDate={value.$d.toDateString()}></AvailableAppointment>
         </div>
     );
 };
