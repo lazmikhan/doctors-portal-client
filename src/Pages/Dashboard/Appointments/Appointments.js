@@ -2,7 +2,7 @@ import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import AppointmentTable from './AppointmentTable/AppointmentTable';
 
-const Appointments = () => {
+const Appointments = (props) => {
     const {user}= useAuth();
     const [appointments, setAppointments]= React.useState([]);
     React.useEffect(()=>{
@@ -10,8 +10,8 @@ const Appointments = () => {
           },[appointments]);
     return (
         <div>
-            <h2>All Appointments: {appointments.length}</h2>
-            <AppointmentTable appointments={appointments}></AppointmentTable>
+          
+            <AppointmentTable chosenDate={props.chosenDate} appointments={appointments}></AppointmentTable>
         </div>
     );
 };

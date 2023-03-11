@@ -35,7 +35,8 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [value, setValue] = React.useState(dayjs(new Date()));
-
+  const chosenDate =value.$d.toLocaleDateString();
+console.log(chosenDate);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -146,7 +147,7 @@ function Dashboard(props) {
       </DemoContainer>
     </LocalizationProvider> </Grid>
 
-<Grid item  xs={12} md={6}><Appointments></Appointments></Grid>
+<Grid item  xs={12} md={6}><Appointments chosenDate={chosenDate}></Appointments></Grid>
 
 
 </Grid>
