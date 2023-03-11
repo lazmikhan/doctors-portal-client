@@ -28,6 +28,7 @@ const Navigation = () => {
             Doctors Portal
           </Typography>
           <Link to='/appointment' style={{textDecoration:'none', color:'white'}}>     <Button color="inherit">Appointment</Button></Link>
+          <Link to='/dashboard' style={{textDecoration:'none', color:'white'}}>     <Button color="inherit">Dashboard</Button></Link>
         {user?.email?   <Link to='/login' style={{textDecoration:'none', color:'white'}}>     <Button onClick={logout} color="inherit">Logout</Button></Link>:   <Link to='/login' style={{textDecoration:'none', color:'white'}}>     <Button color="inherit">Login</Button></Link>}
         </Toolbar>
       </AppBar>
