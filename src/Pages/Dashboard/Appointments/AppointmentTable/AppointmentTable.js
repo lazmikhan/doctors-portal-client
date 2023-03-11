@@ -29,7 +29,7 @@ export default function AppointmentTable(props) {
             <TableCell>Appointment Date</TableCell>
             <TableCell>Appointment Time</TableCell>
             <TableCell>Patient Name</TableCell>
-            {props.chosenDate}
+         
           
           </TableRow>
         </TableHead>
